@@ -20,3 +20,25 @@
 /* SMACSS theme rules */
 /* @import "theme-A.css"; */
 /* @import "theme-B.css"; */
+
+body {
+  background: #CCC;
+  color: #333;
+  font-size: 14px;
+  /*line-height: 2px;*/
+  font-family: Helvetica, Verdana, Arial, sans-serif;
+}
+
+a, a:link {
+  color: #e54739;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+p {
+  margin-top: 4px;
+  margin-bottom: 10px;
+}
