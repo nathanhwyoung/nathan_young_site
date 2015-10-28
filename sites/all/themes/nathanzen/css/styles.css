@@ -23,14 +23,14 @@
 
 body {
   background: #999966;
-  color: #333;
+  color: #660033;
   font-size: 14px;
   /*line-height: 2px;*/
   font-family: Helvetica, Verdana, Arial, sans-serif;
 }
 
 a, a:link {
-  color: #e54739;
+  color: #000;
   text-decoration: none;
 }
 
