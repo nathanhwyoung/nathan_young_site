@@ -1,0 +1,48 @@
+<?php
+
+  /**
+  * @file
+  * ajax_link.module
+  * Provide a simple Ajax link example using the Drupal 7 Ajax Framework
+  */
+
+  /**
+  * Implements hook_menu()
+  */
+  function ajax_link_menu() {
+    $items = array();
+
+    $items['ajax-test'] = array(
+      'title' => 'Ajax Test',
+      'type' => MENU_NORMAL_ITEM,
+      'page callback' => 'ajax_link_page',
+      'access arguments' => array('access content'),
+    );
+
+    $items['my-ajax-test/%'] = array(
+      'title' => 'Ajax Test Callback',
+      'type' => MENU_CALLBACK,
+      'page callback' => 'ajax_link_callback',
+      'page arguments' => array(1),
+      'access arguments' => array('access content'),
+    )
+
+    return $items;
+  }
+
+  /**
+  * Callback function that displays a simple Ajax powered link.
+  */
+  function ajax_link_page() {
+    return array(
+      '#type' => 'link',
+      '#title' => t('Ajax Link'),
+      '#href' => 'my-ajax-test/nojs',
+      '#prefix' => '<div id="ajax-link">',
+      '#suffix' => '</div><div id="ajax-display"></div>',
+      '#ajax' => array(
+        'effect' => 'fade',
+      ),
+    );
+
+  }
