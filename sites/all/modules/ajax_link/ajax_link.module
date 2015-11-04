@@ -44,5 +44,14 @@
         'effect' => 'fade',
       ),
     );
+  }
 
+  /**
+  * Ajax callback to display the current time
+  */
+  function ajax_link_callback($ajax) {
+    // database querying & processing
+    $time = t('The current time is: !time', array('!time' => date('Y-m-d H:i:s')));
+
+    
   }
