@@ -25,7 +25,7 @@
       'page callback' => 'ajax_link_callback',
       'page arguments' => array(1),
       'access arguments' => array('access content'),
-    )
+    );
 
     return $items;
   }
@@ -53,5 +53,26 @@
     // database querying & processing
     $time = t('The current time is: !time', array('!time' => date('Y-m-d H:i:s')));
 
-    
+    if ($ajax == 'ajax') {
+      $commands = array();
+
+      // ajax command to replace the #ajax-display element with the current time.
+      $commands[] = ajax_command_replace('#ajax-display', "<div id='ajax-display'>" . $time . "</div");
+
+      // add a visual "changed" marker to the '#ajax-display' element
+      $commands[] = ajax_command_changed('#ajax-display');
+
+      // trigger our ajax_link jquery plugin
+      $commands[] = ajax_command_invoke(NULL, "ajax_link");
+
+      // menu 'page callback' and #ajax['callback'] functions are supposed to
+      // return render arrays. if returning an ajax commands array, it must be
+      // encapsulated in a render array structure.
+      ajax_deliver(array('#type' => 'ajax', '#commands' =>$commands));
+    } else {
+      // no ajax, just dusplay the time on a page using renderable array
+      return array(
+        '#markup' => $time,
+      );
+    }
   }
