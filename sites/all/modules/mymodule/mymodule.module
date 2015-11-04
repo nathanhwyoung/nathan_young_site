@@ -12,6 +12,7 @@ function mymodule_menu() {
 function mymodule_ajax_callback($js, $node_id) {
   $node = node_load($node_id);
 
+  // if javascript is NOT enabled, redirect to the actual node page
   if ($js == 'nojs') {
     drupal_goto('node/' . $node->nid);
   }
